@@ -49,6 +49,10 @@ db.once('open', () => {
     console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`)
   });
 })
+
+app.get('*', (req, res) => {
+  res.status(404).sendFile(path.join(__dirname, './public/404.html'));
+})
 };
 
 // call the async function to start the server
